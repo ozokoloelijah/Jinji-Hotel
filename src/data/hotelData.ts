@@ -1,0 +1,1228 @@
+import { Room, EventHall, RestaurantDish, Facility, Review, BookingAddOn, HotelInfoConfig, StaffMember, StaffActivityLog, StaffTask, SpecialOffer, LocalAttraction, HotelPolicyItem, JobOpening } from '../types/hotel';
+
+export const HOTEL_INFO: HotelInfoConfig = {
+  name: 'Jinji Hotels Ltd',
+  shortName: 'Jinji Hotels',
+  tagline: 'A Beacon of Luxury and Refined Hospitality',
+  description: 'Welcome to Jinji Hotels Ltd — Where timeless elegance meets authentic Nigerian hospitality. Discover an oasis of tranquility with 52+ elegantly appointed rooms, exquisite dining, resort pool, and magnificent event halls.',
+  logoUrl: '',
+  logoText: 'JINJI HOTELS',
+  logoSubtitle: 'Luxury Hotel & Suites • Akwanga',
+  address: 'Plot 14, Hospitality Boulevard, Opposite AEDC District Office, Andaha-Jos Road, Akwanga, Nasarawa State, Nigeria',
+  shortAddress: 'Andaha-Jos Road, Akwanga, Nasarawa State',
+  phonePrimary: '+234 807 204 8520',
+  phoneSecondary: '+234 814 980 1200',
+  emergencyPhone: '+234 802 999 1100',
+  whatsapp: '+2348072048520',
+  email: 'reservations@jinjihotels.com.ng',
+  inquiriesEmail: 'info@jinjihotels.com.ng',
+  banquetsEmail: 'banquets@jinjihotels.com.ng',
+  checkInTime: '2:00 PM',
+  checkOutTime: '12:00 PM',
+  bankName: 'Zenith Bank Plc',
+  accountNumber: '1018892044',
+  accountName: 'Jinji Hotels Ltd Operations',
+  googleMapUrl: 'https://maps.app.goo.gl/BVnFZfDGksT9tPCd9',
+  googleShareUrl: 'https://share.google/NN3dac8IJIJL1vSF0',
+};
+
+export const HOTEL_STATS = [
+  { label: 'Elegantly Appointed Rooms', value: '52+' },
+  { label: 'Grand Events Hosted', value: '500+' },
+  { label: 'Guaranteed Uninterrupted Power', value: '24/7' },
+  { label: 'Armed Security & CCTV', value: '100%' },
+  { label: 'Guest Satisfaction Rating', value: '4.9 ★' },
+];
+
+export const HOTEL_CORE_VALUES = [
+  { title: 'Refined Luxury', desc: 'Every detail meticulously tailored for supreme guest comfort.' },
+  { title: 'Heartfelt Hospitality', desc: 'Warm, personalized Nigerian warmth and courteous service 24/7.' },
+  { title: 'Uncompromising Integrity', desc: 'Transparent pricing, uncompromising safety, and honest care.' },
+  { title: 'Service Excellence', desc: 'World-class standards in housekeeping, dining, and concierge.' },
+  { title: 'Community & Culture', desc: 'Proudly rooted in Nasarawa State, celebrating rich heritage.' },
+  { title: 'Constant Innovation', desc: 'Smart amenities, Starlink connectivity, and eco-friendly power.' },
+];
+
+export const INITIAL_STAFF_MEMBERS: StaffMember[] = [
+  {
+    id: 'stf-1',
+    staffId: 'JH-MGT-001',
+    name: 'Alhaji Aliyu Tanko',
+    role: 'General Operations Manager',
+    department: 'Management',
+    phone: '+234 803 111 2233',
+    email: 'gm@jinjihotels.com.ng',
+    shiftStatus: 'On Duty',
+    assignedArea: 'Executive Wing & Admin Office',
+    joinedDate: 'Jan 2024',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
+  },
+  {
+    id: 'stf-2',
+    staffId: 'JH-REC-002',
+    name: 'Grace Joshua',
+    role: 'Chief Concierge & Front Office Head',
+    department: 'Front Desk',
+    phone: '+234 807 204 8520',
+    email: 'frontdesk@jinjihotels.com.ng',
+    shiftStatus: 'On Duty',
+    assignedArea: 'Main Reception Lobby',
+    joinedDate: 'Mar 2024',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80',
+  },
+  {
+    id: 'stf-3',
+    staffId: 'JH-FB-003',
+    name: 'Chef Babatunde Adele',
+    role: 'Executive Master Chef',
+    department: 'Food & Beverage',
+    phone: '+234 812 345 6789',
+    email: 'kitchen@jinjihotels.com.ng',
+    shiftStatus: 'On Duty',
+    assignedArea: 'Royal Palm Main Kitchen',
+    joinedDate: 'May 2024',
+    avatar: 'https://images.unsplash.com/photo-1583394293214-28ded15ee548?auto=format&fit=crop&w=200&q=80',
+  },
+  {
+    id: 'stf-4',
+    staffId: 'JH-SEC-004',
+    name: 'Insp. Samuel Oche (Rtd.)',
+    role: 'Chief Security & Power Superintendent',
+    department: 'Security & Power',
+    phone: '+234 802 999 1100',
+    email: 'security@jinjihotels.com.ng',
+    shiftStatus: 'On Duty',
+    assignedArea: 'Power Plant & CCTV Command Room',
+    joinedDate: 'Feb 2024',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
+  },
+  {
+    id: 'stf-5',
+    staffId: 'JH-HK-005',
+    name: 'Zainab Ibrahim',
+    role: 'Executive Housekeeping Supervisor',
+    department: 'Housekeeping',
+    phone: '+234 814 777 8899',
+    email: 'housekeeping@jinjihotels.com.ng',
+    shiftStatus: 'Off Duty',
+    assignedArea: 'Presidential & Executive Suites Wing',
+    joinedDate: 'Aug 2024',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+  },
+  {
+    id: 'stf-6',
+    staffId: 'JH-EV-006',
+    name: 'Emmanuel Habakkuk',
+    role: 'Director of Banquets & State Summits',
+    department: 'Events & Banquets',
+    phone: '+234 809 333 4455',
+    email: 'events@jinjihotels.com.ng',
+    shiftStatus: 'On Duty',
+    assignedArea: 'Grand Crystal Ballroom',
+    joinedDate: 'Apr 2024',
+    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80',
+  },
+];
+
+export const INITIAL_ACTIVITY_LOGS: StaffActivityLog[] = [
+  {
+    id: 'act-1',
+    staffName: 'Grace Joshua',
+    staffRole: 'Front Office Head',
+    action: 'Guest Check-In Verified',
+    category: 'Reservations',
+    timestamp: 'Today at 08:35 AM',
+    details: 'Verified reservation JJH-94281 for Chief Adebayo Adeleke in the Presidential Suite. Issued VIP magnetic keycards.',
+  },
+  {
+    id: 'act-2',
+    staffName: 'Insp. Samuel Oche',
+    staffRole: 'Chief Security Officer',
+    action: 'Power Plant Sync Inspection',
+    category: 'Power & Security' as any,
+    timestamp: 'Today at 07:15 AM',
+    details: 'Cummins Diesel Generator #1 routine 250hr service completed. Solar battery bank at 98% charge. Zero voltage fluctuations.',
+  },
+  {
+    id: 'act-3',
+    staffName: 'Emmanuel Habakkuk',
+    staffRole: 'Events Director',
+    action: 'Grand Ballroom Soundcheck',
+    category: 'Events' as any,
+    timestamp: 'Yesterday at 04:20 PM',
+    details: 'Bose acoustic line-array calibrated for upcoming 850-delegate Economic Summit. Translation headsets verified.',
+  },
+  {
+    id: 'act-4',
+    staffName: 'Chef Babatunde Adele',
+    staffRole: 'Executive Chef',
+    action: 'Daily Fresh Harvest Procurement',
+    category: 'Food & Beverage' as any,
+    timestamp: 'Yesterday at 06:00 AM',
+    details: 'Inspected and approved fresh produce, native goat meat for pepper soup, and premium seafood delivery for Royal Palm restaurant.',
+  },
+];
+
+export const HOME_SLIDER_IMAGES = [
+  {
+    id: 1,
+    title: 'Majestic Architectural Facade',
+    tagline: 'An Oasis of Tranquility in Akwanga, Nasarawa State',
+    url: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=2000&q=85',
+  },
+  {
+    id: 2,
+    title: 'Presidential & Deluxe Suites',
+    tagline: 'Masterpieces of Comfort, Elegance & Modern Design',
+    url: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=2000&q=85',
+  },
+  {
+    id: 3,
+    title: 'Resort Olympic Swimming Pool',
+    tagline: 'Manicured Palms, Sun Loungers & VIP Cabanas',
+    url: 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=2000&q=85',
+  },
+  {
+    id: 4,
+    title: 'The Grand Crystal Ballroom',
+    tagline: 'Magnificent Venue for 1,200+ Guests & Royal Galas',
+    url: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=2000&q=85',
+  },
+  {
+    id: 5,
+    title: 'The Royal Palm Fine Dining',
+    tagline: 'Gourmet Nigerian Specialties & Continental Cuisine',
+    url: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2000&q=85',
+  },
+];
+
+export const ROOMS_DATA: Room[] = [
+  {
+    id: 'standard-room',
+    name: 'Standard Room',
+    tagline: 'Cozy serenity with quintessential comfort for single travelers or couples.',
+    category: 'standard',
+    price: 45000,
+    sizeSqm: 28,
+    bedType: 'Queen Plush Bed',
+    maxGuests: 2,
+    badge: 'Popular Choice',
+    featuredImage: 'https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80',
+    ],
+    description: 'Our Standard Room offers an inviting haven of peace and practical luxury. Featuring an orthopedic Queen-size bed, private marble en-suite bathroom, smart LED TV with premium satellite channels, and dedicated ergonomic workstation.',
+    amenities: [
+      'High-Speed Starlink WiFi',
+      'Individual Climate AC',
+      'En-suite Rain Shower',
+      '43" 4K Smart TV & Cable',
+      'Ergonomic Work Desk',
+      'Tea & Coffee Station',
+      'Daily Housekeeping',
+      'Electronic Digital Safe',
+    ],
+    highlights: ['28 sqm Intimate Space', 'Orthopedic Queen Bed', '24/7 Guaranteed Power', 'City View'],
+  },
+  {
+    id: 'deluxe-room',
+    name: 'Deluxe Room',
+    tagline: 'Enhanced spaciousness and lavish appointments for discerning travelers.',
+    category: 'deluxe',
+    price: 55000,
+    sizeSqm: 36,
+    bedType: 'California King Bed',
+    maxGuests: 2,
+    badge: 'Best Seller',
+    featuredImage: 'https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=80',
+    ],
+    description: 'Designed for guests seeking superior space and tailored indulgence. The Deluxe Room features a sprawling California King bed, custom mahogany furnishings, mini-refrigerator, plush bathrobes, and scenic garden views.',
+    amenities: [
+      'High-Speed Starlink WiFi',
+      'Silent Inverter AC',
+      'Walk-in Italian Rain Shower',
+      '50" 4K Smart TV (Netflix Ready)',
+      'Plush Terry Bathrobes & Slippers',
+      'Stocked Mini Refrigerator',
+      'Luxury Botanical Toiletries',
+      '24/7 In-Room Dining Service',
+    ],
+    highlights: ['36 sqm Generous Layout', 'King Luxury Bed', 'Garden & Courtyard View', 'Free Breakfast Buffet for 1'],
+  },
+  {
+    id: 'super-deluxe-room',
+    name: 'Super Deluxe Room',
+    tagline: 'Expansive modern luxury with separate seating lounge, ideal for extended stays.',
+    category: 'super-deluxe',
+    price: 65000,
+    sizeSqm: 52,
+    bedType: 'King Bed + Velvet Sofa Bed',
+    maxGuests: 3,
+    badge: 'Executive Comfort',
+    featuredImage: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1595576508898-0ad5c879a061?auto=format&fit=crop&w=1200&q=80',
+    ],
+    description: 'The Super Deluxe Room is an expansive 52 sqm sanctuary featuring a dedicated living lounge, designer velvet sofa, Italian marble vanity, and an integrated espresso machine. Ideal for executives, couples, or small families.',
+    amenities: [
+      'Dedicated Living & Lounge Area',
+      'High-Speed Starlink WiFi',
+      'Dual 55" Smart TVs',
+      'Espresso & Artisan Coffee Maker',
+      'Large Marble Bathroom with Soaking Tub',
+      'VIP Priority Room Service',
+      'Luxury Bedding & Down Pillows',
+      'Complimentary Bottled Spring Water',
+    ],
+    highlights: ['52 sqm Suite Layout', 'Living Room + King Bed', 'Deep Soaking Tub', 'Complimentary Breakfast for 2'],
+  },
+  {
+    id: 'executive-vip-suite',
+    name: 'Executive VIP Suite',
+    tagline: 'High-profile distinction with private meeting table and dedicated VIP perks.',
+    category: 'executive',
+    price: 120000,
+    sizeSqm: 68,
+    bedType: 'Emperor King Bed',
+    maxGuests: 3,
+    badge: 'VIP Signature',
+    featuredImage: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=1200&q=80',
+    ],
+    description: 'Tailored for senior diplomats, corporate leaders, and VIP guests. Includes a private 4-seater dining/meeting conference table, master bedroom suite, double vanity marble bathroom, and complimentary evening canapés.',
+    amenities: [
+      'Private 4-Seater Meeting Table',
+      'VIP Sky Lounge Access',
+      '65" OLED Theater System',
+      'Whirlpool Spa Tub & Rain Shower',
+      'Express VIP Check-in & Check-out',
+      'Chilled Welcome Wine & Fruit Basket',
+      'High-Speed Dedicated Fiber Connection',
+      'Premium Minibar & Nespresso Bar',
+    ],
+    highlights: ['68 sqm Executive Space', 'VIP Lounge Access', 'Private Conference Dining', 'Full Breakfast & Afternoon Tea'],
+  },
+  {
+    id: 'presidential-suite',
+    name: 'Presidential Suite',
+    tagline: 'The pinnacle of opulence, private dining, butler service, and private jacuzzi.',
+    category: 'presidential',
+    price: 350000,
+    sizeSqm: 85,
+    bedType: 'Royal Emperor Bed + Guest Bedroom Suite',
+    maxGuests: 4,
+    badge: 'Ultimate Opulence',
+    featuredImage: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80',
+    ],
+    description: 'An architectural tour de force of luxury. Spanning 85 sqm of supreme privacy, this suite offers a lavish master bedroom, private dining salon for 6, full personal 24/7 butler service, private in-suite heated Jacuzzi, panoramic balcony, and bespoke security arrangements.',
+    amenities: [
+      '24/7 Dedicated Butler Service',
+      'Private In-Suite Heated Jacuzzi',
+      'Formal 6-Seater Dining Salon',
+      'Panoramic Balcony with Sunset View',
+      'Complimentary Moët Champagne on Arrival',
+      'Armed Security Detail on Request',
+      'Master Marble Spa Bathroom',
+      'Unlimited Room Service & Chef Consult',
+    ],
+    highlights: ['85 sqm Palace Suite', 'Private Jacuzzi & Butler', 'Formal Dining Room', 'All-Inclusive VIP Experience'],
+  },
+];
+
+export const EVENT_HALLS_DATA: EventHall[] = [
+  {
+    id: 'crystal-ballroom',
+    name: 'The Grand Crystal Ballroom',
+    subtitle: 'Magnificent column-free venue for regal weddings, galas, and state conventions.',
+    banquetCapacity: 800,
+    theaterCapacity: 1200,
+    sqm: 950,
+    dailyRate: 850000,
+    image: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&q=80',
+    features: [
+      'Swarovski crystal ambient chandeliers',
+      'Integrated concert-grade Bose acoustic system',
+      'Motorized dual 4K laser projection screens',
+      'Dedicated VIP green room & bride lounge',
+      'Heavy-duty industrial climate control',
+      'Direct banquet kitchen access',
+    ],
+    description: 'The premier event hall in Nasarawa State. Equipped with soaring ceilings, adjustable dynamic lighting, state-of-the-art stage setups, and opulent decor for unforgettable celebrations.',
+  },
+  {
+    id: 'pearl-conference',
+    name: 'The Pearl Conference Center',
+    subtitle: 'Corporate excellence with high-tech audio-visual gear and hybrid webinar tech.',
+    banquetCapacity: 250,
+    theaterCapacity: 450,
+    sqm: 420,
+    dailyRate: 450000,
+    image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80',
+    features: [
+      'Starlink fiber internet for live broadcast',
+      'Simultaneous multilingual translation booth',
+      'Wireless conference delegate microphones',
+      'Adjustable theater and classroom layouts',
+      'Breakout seminar rooms adjoining',
+    ],
+    description: 'Specifically engineered for high-stakes corporate retreats, government symposiums, training sessions, and product launches with zero technical hitches.',
+  },
+  {
+    id: 'executive-boardroom',
+    name: 'The Senate Executive Boardroom',
+    subtitle: 'Elite VIP setting with ergonomic leather armchairs and video conferencing.',
+    banquetCapacity: 20,
+    theaterCapacity: 30,
+    sqm: 85,
+    dailyRate: 180000,
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
+    features: [
+      'Custom mahogany 20-seat executive table',
+      'Cisco 4K Video Telepresence Suite',
+      'Soundproof acoustic wall paneling',
+      'Private en-suite tea/coffee pantry',
+      'Direct secretary & concierge phone line',
+    ],
+    description: 'A discreet and prestigious haven for board meetings, shareholder deliberations, arbitration hearings, and bilateral summits.',
+  },
+  {
+    id: 'garden-marquee',
+    name: 'The Royal Poolside Garden Marquee',
+    subtitle: 'Enchanting open-air ambiance surrounded by lush greenery and pool lights.',
+    banquetCapacity: 450,
+    theaterCapacity: 600,
+    sqm: 650,
+    dailyRate: 500000,
+    image: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1200&q=80',
+    features: [
+      'Ambient fairy lighting & tropical palms',
+      'Direct access to resort swimming pool & bar',
+      'Spacious paved dance floor area',
+      'Heavy-duty weatherproof canopy setup',
+      'Outdoor BBQ live cooking stations',
+    ],
+    description: 'An idyllic setting for evening cocktail receptions, twilight weddings, birthday celebrations, and milestone anniversary parties.',
+  },
+];
+
+export const RESTAURANT_MENU: RestaurantDish[] = [
+  {
+    id: 'jollof-fiesta',
+    name: 'Jinji Royal Party Jollof Rice',
+    category: 'nigerian',
+    price: 8500,
+    description: 'Smokey firewood firewood jollof rice garnished with fried sweet plantains (dodo), spiced grilled goat meat (asun), and seasoned steamed coleslaw.',
+    isChefSpecial: true,
+    spicyLevel: 2,
+    image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 'pounded-yam-egusi',
+    name: 'Pounded Yam with Rich Egusi Soup',
+    category: 'nigerian',
+    price: 9500,
+    description: 'Silky smooth yam served with slow-simmered melon seed soup loaded with dry fish, stockfish, tender beef tripe, and fresh pumpkin leaves.',
+    isChefSpecial: true,
+    spicyLevel: 1,
+    image: 'https://images.unsplash.com/photo-1604382355076-af4b0eb60143?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 'goat-pepper-soup',
+    name: 'Akwanga Spiced Goat Meat Pepper Soup',
+    category: 'nigerian',
+    price: 7000,
+    description: 'Traditional aromatic herbal broth simmered with tender native goat cuts, alligator pepper, calabash nutmeg, and fresh scent leaves.',
+    spicyLevel: 3,
+    image: 'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 'charcoal-suya',
+    name: 'Charcoal Flame Suya Platter',
+    category: 'starters',
+    price: 6500,
+    description: 'Finely sliced prime beef steak marinated in authentic Hausa yaji spice, charred over open embers, served with sliced red onions and tomatoes.',
+    isChefSpecial: true,
+    spicyLevel: 3,
+    image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 'ribeye-steak',
+    name: 'Prime Grilled Ribeye Steak',
+    category: 'continental',
+    price: 18500,
+    description: '350g USDA choice beef ribeye grilled to your preference, served with garlic herb compound butter, roasted asparagus, and truffle mashed potatoes.',
+    isChefSpecial: true,
+    image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 'norwegian-salmon',
+    name: 'Pan-Seared Norwegian Salmon',
+    category: 'continental',
+    price: 19500,
+    description: 'Crispy-skin wild salmon fillet glazed with lemon-dill cream, accompanied by buttered baby carrots and wild wild rice pilaf.',
+    image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 'seafood-fettuccine',
+    name: 'Creamy Seafood Fettuccine Alfredo',
+    category: 'continental',
+    price: 14000,
+    description: 'Handmade Italian pasta tossed with sautéed jumbo prawns, calamari rings, aged Parmigiano Reggiano, and roasted garlic cream sauce.',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 'signature-cocktail',
+    name: 'Jinji Sunset Gold Cocktail',
+    category: 'drinks',
+    price: 4500,
+    description: 'Aged Caribbean rum infused with fresh passionfruit, pineapple reduction, hibiscus nectar, and garnished with dehydrated orange & gold dust.',
+    isChefSpecial: true,
+    image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 'palm-wine-cooler',
+    name: 'Artisan Zobo & Palm Cooler (Mocktail)',
+    category: 'drinks',
+    price: 3500,
+    description: 'Freshly brewed hibiscus calyces with ginger, cloves, fresh pineapple juice, and crushed mint on the rocks.',
+    image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 'chocolate-lava',
+    name: 'Warm Belgian Chocolate Lava Cake',
+    category: 'desserts',
+    price: 5500,
+    description: 'Decadent dark chocolate molten core cake paired with Madagascar bourbon vanilla bean ice cream and raspberry coulis.',
+    image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=80',
+  },
+];
+
+export const FACILITIES_DATA: Facility[] = [
+  {
+    id: 'power-supply',
+    title: '24/7 Guaranteed Power Supply',
+    subtitle: 'Zero Power Downtime',
+    description: 'Equipped with synchronized heavy-duty industrial Cummins diesel generators and advanced hybrid solar backup to guarantee uninterrupted electricity and air conditioning day and night.',
+    iconName: 'Zap',
+    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80',
+    hours: '24 Hours / 365 Days',
+  },
+  {
+    id: 'resort-pool',
+    title: 'Resort Olympic Swimming Pool',
+    subtitle: 'Crystal Clear Water & Cabanas',
+    description: 'An expansive outdoor swimming pool surrounded by manicured tropical gardens, sun loungers, private VIP cabanas, and full poolside cocktail bar service.',
+    iconName: 'Waves',
+    image: 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=800&q=80',
+    hours: '6:00 AM – 10:00 PM Daily',
+  },
+  {
+    id: 'security',
+    title: 'Armed Security & CCTV Surveillance',
+    subtitle: 'Maximum Safety Assured',
+    description: 'Round-the-clock trained security personnel, armed mobile police escorts on request, biometric access gates, and 128 high-definition perimeter CCTV cameras.',
+    iconName: 'ShieldCheck',
+    image: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=800&q=80',
+    hours: '24 Hours Always Active',
+  },
+  {
+    id: 'starlink-wifi',
+    title: 'Starlink Ultra-Fast Fiber Wi-Fi',
+    subtitle: 'Blazing Fast Speeds Up to 350 Mbps',
+    description: 'Complimentary high-speed Starlink satellite and fiber internet covering every corner of the hotel, suites, conference halls, and poolside grounds.',
+    iconName: 'Wifi',
+    image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80',
+    hours: 'Unlimited Complimentary Access',
+  },
+  {
+    id: 'dining-restaurant',
+    title: 'The Royal Palm Restaurant & Bar',
+    subtitle: 'Culinary Masterpieces',
+    description: 'Fine dining room with seating for 150 guests, featuring both mouthwatering Nigerian native dishes and continental gourmet delicacies prepared by certified executive chefs.',
+    iconName: 'UtensilsCrossed',
+    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80',
+    hours: '6:30 AM – 11:30 PM (24/7 Room Service)',
+  },
+  {
+    id: 'fitness-center',
+    title: 'Modern Fitness & Wellness Gym',
+    subtitle: 'Stay Fit & Energized',
+    description: 'Cardiovascular treadmills, elliptical trainers, free weights, resistance machines, yoga mats, and certified personal fitness trainers upon request.',
+    iconName: 'Dumbbell',
+    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80',
+    hours: '5:30 AM – 10:00 PM Daily',
+  },
+  {
+    id: 'parking-valet',
+    title: 'Ample Secured Parking & Valet',
+    subtitle: 'Over 200 Vehicle Capacity',
+    description: 'Spacious well-lit interlocked parking grounds with 24-hour perimeter patrol, complimentary car wash services, and professional valet parking assistance.',
+    iconName: 'Car',
+    image: 'https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=800&q=80',
+    hours: '24 Hours Monitored',
+  },
+  {
+    id: 'laundry-service',
+    title: 'Express Laundry & Dry Cleaning',
+    subtitle: 'Pristine Garment Care',
+    description: 'Same-day steam pressing, dry cleaning, and delicate fabric washing to keep your executive attire looking sharp throughout your stay.',
+    iconName: 'Sparkles',
+    image: 'https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=800&q=80',
+    hours: '7:00 AM – 8:00 PM Daily',
+  },
+];
+
+export const REVIEWS_DATA: Review[] = [
+  {
+    id: 'rev-1',
+    name: 'Engr. Ibrahim Abdullahi',
+    role: 'Corporate Managing Director',
+    location: 'Abuja, Nigeria',
+    rating: 5,
+    date: 'October 2026',
+    roomStayed: 'Presidential Suite',
+    comment: 'Jinji Hotels Ltd is in a league of its own. The presidential suite was truly world-class, from the private jacuzzi to the attentive butler service. The 24/7 power never blinked once. It is now our company’s official retreat hotel in Nasarawa State.',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
+  },
+  {
+    id: 'rev-2',
+    name: 'Dr. (Mrs.) Chioma Nnamdi',
+    role: 'Health Policy Consultant',
+    location: 'Lafia, Nasarawa',
+    rating: 5,
+    date: 'September 2026',
+    roomStayed: 'Super Deluxe Room',
+    comment: 'The tranquility here is unmatched! The bed was so plush, and the food at the restaurant was superb. The Egusi soup and pounded yam tasted like home-cooked royalty. The staff were exceptionally warm and courteous.',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80',
+  },
+  {
+    id: 'rev-3',
+    name: 'Barrister Tunde Adeleke',
+    role: 'Commercial Attorney',
+    location: 'Lagos, Nigeria',
+    rating: 5,
+    date: 'August 2026',
+    roomStayed: 'Executive VIP Suite',
+    comment: 'We hosted a 3-day strategic conference in their Crystal Ballroom with over 400 attendees. Flawless audiovisuals, ultra-fast Starlink internet, and exceptional banquet catering. 10/10 recommendation.',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
+  },
+  {
+    id: 'rev-4',
+    name: 'Hajiya Fatima Bello',
+    role: 'Wedding Host & Entrepreneur',
+    location: 'Jos, Plateau State',
+    rating: 5,
+    date: 'July 2026',
+    roomStayed: 'Deluxe Room',
+    comment: 'My daughter’s wedding was held here. The poolside garden marquee at night with the ambient lights looked like something out of a fairytale! Every single guest had glowing compliments for Jinji Hotels.',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+  },
+];
+
+export const BOOKING_ADDONS: BookingAddOn[] = [
+  {
+    id: 'buffet-breakfast',
+    name: 'Daily Chef Buffet Breakfast',
+    description: 'Hot Nigerian & Continental spread, omelet station, fresh juices, and artisan coffee.',
+    price: 5000,
+    perNight: true,
+  },
+  {
+    id: 'airport-pickup',
+    name: 'Executive Airport Chauffeur (Abuja / Lafia)',
+    description: 'Luxury air-conditioned SUV pickup with dedicated driver & cold bottled refreshments.',
+    price: 35000,
+    perNight: false,
+  },
+  {
+    id: 'welcome-champagne',
+    name: 'VIP Welcome Chilled Champagne & Tropical Fruit',
+    description: 'Bottle of premium sparkling wine and assorted exotic seasonal fruits in room on arrival.',
+    price: 25000,
+    perNight: false,
+  },
+  {
+    id: 'spa-relaxation',
+    name: '60-Minute Swedish Body Massage',
+    description: 'Holistic deep-tissue therapy by certified masseuse at our wellness suite.',
+    price: 20000,
+    perNight: false,
+  },
+];
+
+export const GALLERY_IMAGES = [
+  {
+    id: 1,
+    title: 'Presidential Master Suite',
+    category: 'rooms',
+    image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1200&q=80',
+    description: 'Luxurious king bed with panoramic sunset views',
+  },
+  {
+    id: 2,
+    title: 'Resort Olympic Swimming Pool',
+    category: 'pool',
+    image: 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=80',
+    description: 'Sparkling blue waters surrounded by lush tropical palms',
+  },
+  {
+    id: 3,
+    title: 'The Grand Crystal Ballroom',
+    category: 'events',
+    image: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&q=80',
+    description: 'Majestic banquet setup for royal weddings & galas',
+  },
+  {
+    id: 4,
+    title: 'The Royal Palm Fine Dining',
+    category: 'dining',
+    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
+    description: 'Sophisticated restaurant interior and mood lighting',
+  },
+  {
+    id: 5,
+    title: 'Super Deluxe Living Suite',
+    category: 'rooms',
+    image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80',
+    description: 'Spacious 52 sqm living salon and plush furnishings',
+  },
+  {
+    id: 6,
+    title: 'Sunset Cocktail at Poolside Bar',
+    category: 'dining',
+    image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80',
+    description: 'Signature Jinji tropical mixes and evening vibes',
+  },
+  {
+    id: 7,
+    title: 'Senate VIP Boardroom',
+    category: 'events',
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
+    description: 'High-tech conference setup for leaders and board meetings',
+  },
+  {
+    id: 8,
+    title: 'Deluxe Suite Marble Bath',
+    category: 'rooms',
+    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80',
+    description: 'Italian marble bathroom with rainfall shower',
+  },
+  {
+    id: 9,
+    title: 'Poolside Garden Marquee Event',
+    category: 'pool',
+    image: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1200&q=80',
+    description: 'Enchanting twilight outdoor celebration',
+  },
+];
+
+export const FAQ_DATA = [
+  {
+    q: 'Where exactly is Jinji Hotels Ltd located?',
+    a: 'Jinji Hotels Ltd is centrally situated along Andaha-Jos Road, Opposite AEDC District Office in Akwanga, Nasarawa State, Nigeria. It provides peaceful serenity while remaining easily accessible from Abuja (approx. 90 minutes drive) and Lafia. Direct Google Maps navigation: https://maps.app.goo.gl/BVnFZfDGksT9tPCd9 and location pin: https://share.google/NN3dac8IJIJL1vSF0.',
+  },
+  {
+    q: 'How does your 24/7 power guarantee work?',
+    a: 'We understand the critical importance of uninterrupted electricity. Jinji Hotels Ltd operates twin heavy-duty Cummins industrial generators with automatic synchronized changeover and high-capacity solar inverter storage, guaranteeing 24/7 continuous AC and lighting with zero blackouts.',
+  },
+  {
+    q: 'What are your standard Check-in and Check-out times?',
+    a: 'Standard check-in begins at 2:00 PM, and check-out is by 12:00 PM noon. Early check-in or late check-out can be arranged subject to room availability by notifying our front desk or concierge.',
+  },
+  {
+    q: 'Do you offer airport transfer services?',
+    a: 'Yes, we provide luxury VIP chauffeur airport pickups and drop-offs to and from Nnamdi Azikiwe International Airport Abuja as well as Lafia city centers. You can select this add-on during reservation or contact our concierge.',
+  },
+  {
+    q: 'Can I book an event hall or schedule a wedding reception?',
+    a: 'Absolutely! Our Grand Crystal Ballroom (up to 1,200 guests), Conference Center, and Garden Marquee host prestigious weddings, political summits, and corporate galas. You can submit an event proposal directly on this site or call +234 807 204 8520.',
+  },
+  {
+    q: 'What payment methods do you accept?',
+    a: 'We accept all Nigerian bank debit cards (Mastercard, Visa, Verve), direct instant bank transfers to our corporate account, POS terminals at the front desk, and cash at check-in with a guaranteed reservation reference.',
+  },
+];
+
+export const INITIAL_STAFF_TASKS: StaffTask[] = [
+  {
+    id: 'tsk-1',
+    title: 'VIP Presidential Suite Turn-Down & Floral Arrangement',
+    assignedStaffId: 'stf-5',
+    assignedStaffName: 'Zainab Ibrahim',
+    department: 'Housekeeping',
+    priority: 'Urgent',
+    status: 'In Progress',
+    location: 'Presidential Suite (Floor 4, Wing A)',
+    dueDate: 'Today, 2:00 PM',
+    notes: 'Prepare fresh linen, welcome fruit platter, chilled champagne, and scented diffusers for incoming delegation.',
+    createdAt: '2026-10-18T08:30:00Z',
+  },
+  {
+    id: 'tsk-2',
+    title: 'Cummins Diesel Generator #1 Routine Diagnostics & ATS Verification',
+    assignedStaffId: 'stf-4',
+    assignedStaffName: 'Insp. Samuel Oche',
+    department: 'Security & Power',
+    priority: 'High',
+    status: 'Completed',
+    location: 'Central Power House & Generator Compound',
+    dueDate: 'Today, 10:00 AM',
+    notes: 'Verify Automatic Transfer Switch latency (under 1.5 seconds) and verify 94% bulk diesel reserves.',
+    createdAt: '2026-10-18T06:00:00Z',
+  },
+  {
+    id: 'tsk-3',
+    title: 'Grand Ballroom Stage Lighting & Bose Acoustic Line-Array Setup',
+    assignedStaffId: 'stf-6',
+    assignedStaffName: 'Emmanuel Habakkuk',
+    department: 'Events & Banquets',
+    priority: 'High',
+    status: 'In Progress',
+    location: 'Grand Crystal Ballroom',
+    dueDate: 'Tomorrow, 9:00 AM',
+    notes: 'Setup banquet layout for 850 delegates, 4 roaming wireless microphones, and translation headsets.',
+    createdAt: '2026-10-18T09:15:00Z',
+  },
+  {
+    id: 'tsk-4',
+    title: 'Front Desk Night Audit & Reservation Reconciliation',
+    assignedStaffId: 'stf-2',
+    assignedStaffName: 'Grace Joshua',
+    department: 'Front Desk',
+    priority: 'Normal',
+    status: 'Pending',
+    location: 'Main Reception & Front Office',
+    dueDate: 'Tonight, 11:30 PM',
+    notes: 'Balance all POS settlement slips against daily guest checkout invoices and update occupancy records.',
+    createdAt: '2026-10-18T10:00:00Z',
+  },
+];
+
+export const OFFERS_DATA: SpecialOffer[] = [
+  {
+    id: 'offer-weekend-romance',
+    title: 'Royal Romance & Weekend Escape',
+    subtitle: 'The Ultimate Couples Getaway in Akwanga',
+    discountBadge: '25% OFF',
+    promoCode: 'ROMANCE25',
+    regularPrice: 160000,
+    offerPrice: 120000,
+    validity: 'Valid Friday to Sunday',
+    targetRoomId: 'deluxe',
+    image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80',
+    highlights: [
+      '2 Nights in Elegantly Appointed Deluxe Suite',
+      'Complimentary bottle of VIP Sparkling Wine on arrival',
+      'Candlelit 3-Course Dinner for 2 at Royal Palm Restaurant',
+      'Full Chef American & Nigerian Breakfast in bed daily',
+      'Late check-out guaranteed until 3:00 PM',
+      'Unlimited poolside cabana reservation'
+    ],
+    terms: 'Subject to weekend suite availability. Advance booking required with promo code ROMANCE25.'
+  },
+  {
+    id: 'offer-corporate-retreat',
+    title: 'Executive Corporate Conference Package',
+    subtitle: 'High-Level Strategic Retreats with 24/7 Power',
+    discountBadge: 'CORPORATE VIP',
+    promoCode: 'BIZRETREAT',
+    regularPrice: 350000,
+    offerPrice: 280000,
+    validity: 'Valid Monday through Thursday',
+    targetRoomId: 'executive',
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
+    highlights: [
+      'Accommodations in Executive Suites with Dedicated Work Desks',
+      'Complimentary access to Senate VIP Boardroom for full workday',
+      'Dedicated high-bandwidth Starlink fiber line for video conferencing',
+      'Morning & Afternoon executive coffee breaks with savory pastries',
+      'Free airport chauffeur shuttle for CEO / Lead Keynote speaker',
+      'Zero downtime 24/7 industrial power guarantee'
+    ],
+    terms: 'Minimum 5 rooms booked. Inquiring organizations must provide official booking voucher.'
+  },
+  {
+    id: 'offer-honeymoon-royale',
+    title: 'Presidential Honeymoon Extravaganza',
+    subtitle: 'Begin Forever with Unrivalled Opulence',
+    discountBadge: 'EXCLUSIVE',
+    promoCode: 'HONEYMOONROYAL',
+    regularPrice: 550000,
+    offerPrice: 420000,
+    validity: 'All Year Round',
+    targetRoomId: 'presidential',
+    image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1200&q=80',
+    highlights: [
+      '3 Nights in the Grand Presidential Master Suite',
+      'Private jacuzzi with floral rose-petal turn-down service',
+      'Personal 24-Hour dedicated butler service',
+      'Chilled Moët & Chandon champagne & exotic fruit basket',
+      'Complimentary 60-Minute couples Swedish massage',
+      'Private candlelit dinner under the stars by the poolside garden'
+    ],
+    terms: 'Reservations must be booked at least 72 hours prior to arrival.'
+  },
+  {
+    id: 'offer-long-stay',
+    title: 'Extended Residence & Long Stay Discount',
+    subtitle: 'Your Luxury Home Away from Home in Nasarawa',
+    discountBadge: 'SAVE 30%',
+    promoCode: 'LONGSTAY30',
+    regularPrice: 70000,
+    offerPrice: 49000,
+    validity: 'Stays of 7 Nights or More',
+    targetRoomId: 'standard',
+    image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1200&q=80',
+    highlights: [
+      'Up to 30% discount off standard rack rates across all room tiers',
+      'Complimentary laundry & dry-cleaning for 4 pieces daily',
+      'Daily housekeeping and linen change',
+      'Dedicated high-speed Starlink workstation setup',
+      '15% discount on all food & beverage orders at Royal Palm Restaurant'
+    ],
+    terms: 'Requires a minimum continuous stay of 7 consecutive nights.'
+  },
+  {
+    id: 'offer-sunday-buffet',
+    title: 'Sunday Poolside Barbecue & Family Feast',
+    subtitle: 'Nasarawa’s Premier Weekend Gathering',
+    discountBadge: 'WEEKEND SPECIAL',
+    promoCode: 'SUNDAYPASS',
+    regularPrice: 15000,
+    offerPrice: 10000,
+    validity: 'Every Sunday (12:00 PM – 6:00 PM)',
+    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80',
+    highlights: [
+      'All-you-can-eat buffet: Asun, Grilled Croaker Fish, Suya, Native soups',
+      'Unlimited access to the Olympic resort swimming pool',
+      'Live acoustic jazz & Afro-fusion band poolside',
+      'Kids splash zone & fun games with dedicated attendants',
+      'Special discounted poolside cocktail & mocktail rates'
+    ],
+    terms: 'Children under 6 eat free. Pool towel provided with refundable card.'
+  }
+];
+
+export const LOCAL_ATTRACTIONS_DATA: LocalAttraction[] = [
+  {
+    id: 'farin-ruwa-falls',
+    name: 'Farin Ruwa Waterfalls',
+    category: 'nature',
+    distanceKm: 42,
+    travelTimeMinutes: 50,
+    image: 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=1200&q=80',
+    description: 'One of the highest and most awe-inspiring waterfalls in Africa, cascading down a dramatic 150-meter granite cliff into lush tropical mist. Known locally as "White Water", it is an international-grade eco-tourism marvel in Nasarawa State.',
+    highlights: [
+      'Breathtaking 150m vertical multi-tier cascade',
+      'Pristine evergreen valley and rare bird watching',
+      'Ideal for photography, hiking, and tranquil nature picnics',
+      'Cool micro-climate and therapeutic freshwater mist'
+    ],
+    conciergeService: 'Jinji Hotels arranges private 4x4 guided day tours with executive SUV chauffeur, gourmet picnic lunch, and local tour guide.',
+    bestTimeToVisit: 'Morning to mid-afternoon (8:00 AM – 3:00 PM), especially during May through November.'
+  },
+  {
+    id: 'eggon-hills-caves',
+    name: 'Eggon Hills & Historic Natural Caves',
+    category: 'culture',
+    distanceKm: 18,
+    travelTimeMinutes: 25,
+    image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80',
+    description: 'A striking mountain range rising majestically over 1,200 meters above sea level. Rich in historical folklore and ancient stone settlements, the hills feature cavernous natural caves once utilized by ancient communities for shelter.',
+    highlights: [
+      'Panoramic 360-degree views across Akwanga valley',
+      'Scenic rock climbing, trekking, and guided mountain trails',
+      'Fascinating ancient stone architecture and cultural lore',
+      'Popular spot for sunrise expeditions and fitness hikers'
+    ],
+    conciergeService: 'Complimentary trekking maps, walking poles, and certified local guides arranged via Front Desk concierge.',
+    bestTimeToVisit: 'Early morning (6:30 AM – 10:00 AM) to experience cool mountain breezes and dramatic sunrise views.'
+  },
+  {
+    id: 'coe-akwanga',
+    name: 'College of Education (COE) Akwanga',
+    category: 'education',
+    distanceKm: 3.5,
+    travelTimeMinutes: 6,
+    image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80',
+    description: 'One of Nigeria’s premier educator training colleges, located just minutes from Jinji Hotels. The historic institution frequently hosts state educational symposiums, matriculation ceremonies, and visiting scholars.',
+    highlights: [
+      'Leading academic institution in Nasarawa State',
+      'Frequent venue for state education summits and conferences',
+      'Expansive landscaped campus and sports grounds',
+      'Convenient proximity for visiting professors, examiners, and families'
+    ],
+    conciergeService: 'Quick 5-minute shuttle transit service available 24/7 for conference delegates and visiting lecturers.',
+    bestTimeToVisit: 'Weekdays 8:00 AM – 5:00 PM during academic sessions and convocation ceremonies.'
+  },
+  {
+    id: 'akwanga-central-market',
+    name: 'Akwanga Central Heritage Market',
+    category: 'market',
+    distanceKm: 2.8,
+    travelTimeMinutes: 7,
+    image: 'https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&w=1200&q=80',
+    description: 'The bustling cultural epicenter of local trade. Experience authentic Nasarawa food markets, organic wild blossom honey, handwoven traditional Eggon and Mada textile attire, and fresh farm-to-table harvests.',
+    highlights: [
+      'Famous Nasarawa giant yams, beniseed, and wild mountain honey',
+      'Handcrafted terracotta pottery and woven baskets',
+      'Vibrant local cultural interaction and photography opportunities',
+      'Friendly local artisans and spice merchants'
+    ],
+    conciergeService: 'Hotel provides guided shopping escorts and secure package storage for purchased regional goods.',
+    bestTimeToVisit: 'Market days (especially Wednesdays and Saturdays) 9:00 AM – 2:00 PM.'
+  },
+  {
+    id: 'keffi-abuja-corridor',
+    name: 'Keffi & Abuja Capital Gateway Corridor',
+    category: 'government',
+    distanceKm: 58,
+    travelTimeMinutes: 55,
+    image: 'https://images.unsplash.com/photo-1477959858617-67f30bc75b82?auto=format&fit=crop&w=1200&q=80',
+    description: 'Akwanga serves as the scenic peaceful transit hub connecting the Federal Capital Territory (Abuja) to Plateau, Benue, and Bauchi states. Jinji Hotels offers an unhurried luxury haven away from congested capital traffic.',
+    highlights: [
+      'Smooth, paved dual-lane expressway connection to Abuja',
+      'Home to Nasarawa State University Keffi (NSUK)',
+      'Strategic meeting point for business executives traveling inter-state',
+      'Safe, secure, and serene rest-stop with five-star luxury'
+    ],
+    conciergeService: 'Direct executive chauffeur service connecting to Abuja Central Business District and Nnamdi Azikiwe Airport.',
+    bestTimeToVisit: 'Accessible 24 hours daily with 24/7 front desk check-in.'
+  },
+  {
+    id: 'lafia-capital-city',
+    name: 'Lafia State Capital & Government Enclave',
+    category: 'government',
+    distanceKm: 52,
+    travelTimeMinutes: 45,
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
+    description: 'The administrative heart of Nasarawa State. Visiting commissioners, contractors, diplomats, and business leaders routinely lodge at Jinji Hotels in Akwanga for its pristine serenity and superior luxury accommodations.',
+    highlights: [
+      'Nasarawa State Government House and Ministries',
+      'Lafia City Stadium and Cultural Centre',
+      'Direct highway transit route with zero congestion',
+      'Preferred peaceful retreat after busy administrative hearings'
+    ],
+    conciergeService: 'Dedicated VIP transfer vehicles with professional security protocol on request.',
+    bestTimeToVisit: 'Year-round access for state governance and commercial missions.'
+  }
+];
+
+export const HOTEL_POLICIES_DATA: HotelPolicyItem[] = [
+  {
+    id: 'pol-checkin',
+    category: 'Arrival & Departure',
+    title: 'Check-In & Check-Out Policy',
+    summary: 'Standard check-in starts at 2:00 PM and check-out is by 12:00 PM noon.',
+    details: [
+      'Early check-in from 10:00 AM is complimentary subject to room availability on arrival.',
+      'Late check-out until 2:00 PM can be requested for a nominal fee or complimentary for Executive/Presidential suites.',
+      'Guests must present a valid government-issued photographic ID (National ID Card, Driver’s License, Voter’s Card, or International Passport) at registration.',
+      'A room key card and electronic authorization is issued upon completion of check-in.'
+    ],
+    iconName: 'Clock'
+  },
+  {
+    id: 'pol-power',
+    category: 'Power & Infrastructure',
+    title: '24/7 Uninterrupted Power Guarantee',
+    summary: 'Guaranteed 24-hour continuous electricity and climate control with zero blackouts.',
+    details: [
+      'Synchronized twin Cummins industrial diesel generators backed by high-capacity smart solar inverter arrays.',
+      'Automatic Transfer Switch (ATS) ensures changeovers occur in under 2 seconds, completely seamless to room appliances.',
+      'All 52+ suites and conference halls maintain continuous chilled air conditioning and constant Starlink Wi-Fi.'
+    ],
+    iconName: 'Zap'
+  },
+  {
+    id: 'pol-security',
+    category: 'Safety & Security',
+    title: 'Comprehensive Safety & Security Protocol',
+    summary: 'Armed security personnel, biometric checkpoints, and 24/7 CCTV surveillance.',
+    details: [
+      'Perimeter security maintained 24/7 by licensed personnel and stationed Nigeria Police escorts.',
+      '128 High-Definition optical surveillance cameras monitoring all public corridors, parking grounds, and entry perimeters.',
+      'Electronic electronic in-room digital safe provided in all Deluxe, Executive, and Presidential rooms.',
+      'Fire extinguishers, smoke detectors, and clearly illuminated evacuation routes on every floor.'
+    ],
+    iconName: 'ShieldCheck'
+  },
+  {
+    id: 'pol-cancellation',
+    category: 'Reservations & Payments',
+    title: 'Cancellation & Refund Terms',
+    summary: 'Flexible cancellation up to 24 hours prior to check-in for standard individual reservations.',
+    details: [
+      'Free cancellation for standard reservations cancelled at least 24 hours prior to the scheduled check-in time (2:00 PM).',
+      'Cancellations made within 24 hours of arrival will be charged a one-night room fee.',
+      'Group or banquet reservations (5+ rooms or event halls) require 7 days advance notice for full refund of deposit.',
+      'Refunds are processed back to the originating bank account within 3–5 business working days.'
+    ],
+    iconName: 'CreditCard'
+  },
+  {
+    id: 'pol-children',
+    category: 'Family & Extra Guests',
+    title: 'Children & Additional Guests Policy',
+    summary: 'Children under 10 years stay complimentary when sharing existing bedding with parents.',
+    details: [
+      'Up to two children under 10 years stay free of charge in parental suites.',
+      'Baby cribs / cots are provided free of charge upon advance request (subject to availability).',
+      'Extra rollaway adult bedding is available at ₦10,000 per night including breakfast.',
+      'Maximum room guest capacities must be observed for safety and comfort compliance.'
+    ],
+    iconName: 'Users'
+  },
+  {
+    id: 'pol-pool',
+    category: 'Recreation & Facilities',
+    title: 'Swimming Pool & Fitness Center Regulations',
+    summary: 'Pool operates daily from 6:00 AM to 10:00 PM for registered hotel guests and day-pass holders.',
+    details: [
+      'Proper swimwear (spandex/nylon swimsuits) is mandatory. Street clothes or cotton garments are not permitted in the water.',
+      'Children under 14 years must be accompanied by an adult guardian at all times around the pool deck.',
+      'Certified lifeguard is on active duty during peak hours (10:00 AM – 7:00 PM).',
+      'No glass bottles or ceramic dishware allowed on the immediate pool perimeter for foot safety.'
+    ],
+    iconName: 'Waves'
+  },
+  {
+    id: 'pol-smoking',
+    category: 'Hygiene & Cleanliness',
+    title: 'Non-Smoking & Pet Guidelines',
+    summary: 'All interior suites and hallways are strictly 100% smoke-free zones.',
+    details: [
+      'Smoking of tobacco, cigars, or electronic cigarettes is strictly prohibited inside any guest room or enclosed corridor.',
+      'Designated outdoor smoking gazebos and terrace spots are provided with ashtrays.',
+      'A deep sanitization cleaning fee of ₦50,000 applies if smoking occurs inside a room.',
+      'Pets are generally not permitted on hotel premises, with exceptions made for registered service animals with prior management clearance.'
+    ],
+    iconName: 'Sparkles'
+  }
+];
+
+export const CAREER_OPENINGS_DATA: JobOpening[] = [
+  {
+    id: 'job-front-desk',
+    title: 'Guest Relations Officer / Front Desk Concierge',
+    department: 'Front Office & Reception',
+    jobType: 'Full-time',
+    location: 'Akwanga, Nasarawa State',
+    experienceLevel: '2+ years hospitality experience',
+    salaryRange: '₦120,000 – ₦160,000 / month + performance bonus',
+    description: 'We are seeking an eloquent, poised, and welcoming hospitality professional to deliver first-class front desk reception, guest check-in, and concierge assistance at Jinji Hotels Ltd.',
+    responsibilities: [
+      'Warmly welcome arriving guests, manage seamless check-in and check-out procedures',
+      'Handle room key assignments, guest folio billing, and reservation lookups via hotel software',
+      'Respond to guest inquiries regarding local Akwanga attractions, dining, and shuttle services',
+      'Collaborate closely with Housekeeping and Security to maintain pristine guest satisfaction'
+    ],
+    requirements: [
+      'B.Sc or HND in Hospitality Management, Mass Communication, or related field',
+      'Exceptional spoken and written English; Hausa fluency is an added advantage',
+      'Proficiency in hotel property management systems (PMS) and MS Office',
+      'Warm interpersonal disposition with high emotional intelligence and customer care ethics'
+    ]
+  },
+  {
+    id: 'job-sous-chef',
+    title: 'Sous Chef (Nigerian & Continental Cuisine)',
+    department: 'Food & Beverage',
+    jobType: 'Full-time',
+    location: 'Akwanga, Nasarawa State',
+    experienceLevel: '3+ years commercial kitchen experience',
+    salaryRange: '₦180,000 – ₦240,000 / month + meals on duty',
+    description: 'Lead culinary execution at The Royal Palm Restaurant, creating mouthwatering native Nigerian specialties (Afang, Egusi, Ofe Owerri) alongside fine continental dishes.',
+    responsibilities: [
+      'Prepare high-quality culinary dishes adhering to Jinji Hotels 5-star presentation recipes',
+      'Manage kitchen line operations, food hygiene safety, and temperature controls',
+      'Assist the Executive Chef in menu development and banquet catering for up to 1,000 guests',
+      'Train and supervise junior culinary assistants and kitchen stewards'
+    ],
+    requirements: [
+      'Culinary arts certification or equivalent practical professional track record',
+      'Demonstrated mastery of both indigenous Nigerian cuisine and continental entrees',
+      'Strict adherence to food sanitation (HACCP) standards',
+      'Ability to thrive in a high-volume, fast-paced kitchen environment'
+    ]
+  },
+  {
+    id: 'job-power-engineer',
+    title: 'Facility Electrical Engineer (Generators & Solar ATS)',
+    department: 'Engineering & Maintenance',
+    jobType: 'Full-time',
+    location: 'Akwanga, Nasarawa State',
+    experienceLevel: '3+ years industrial power experience',
+    salaryRange: '₦160,000 – ₦220,000 / month',
+    description: 'Oversee the zero-downtime power infrastructure at Jinji Hotels Ltd, including Cummins diesel generators, automatic transfer switchgear, solar inverter arrays, and building HVAC.',
+    responsibilities: [
+      'Conduct daily preventive maintenance diagnostics on industrial generators and ATS systems',
+      'Monitor electrical distribution boards, fuel storage levels, and solar inverter banks',
+      'Quickly troubleshoot any electrical, lighting, or pump malfunctions across hotel premises',
+      'Maintain detailed logs of generator run-times, oil cycles, and diesel replenishment'
+    ],
+    requirements: [
+      'Trade test or HND/B.Eng in Electrical/Mechanical Engineering',
+      'Deep hands-on experience with Cummins/Perkins diesel engines and smart ATS panels',
+      'Understanding of 3-phase commercial electrical distribution and solar backup systems',
+      'Proactive mindset with 24/7 emergency response capability'
+    ]
+  },
+  {
+    id: 'job-housekeeping-lead',
+    title: 'Housekeeping Team Supervisor',
+    department: 'Housekeeping & Laundry',
+    jobType: 'Full-time',
+    location: 'Akwanga, Nasarawa State',
+    experienceLevel: '2+ years luxury hotel housekeeping',
+    salaryRange: '₦110,000 – ₦140,000 / month',
+    description: 'Ensure our 52+ luxury suites, presidential quarters, and public guest facilities consistently meet impeccable five-star cleanliness and hygienic luxury standards.',
+    responsibilities: [
+      'Inspect rooms prior to guest arrival to ensure pristine turn-down and amenity restocking',
+      'Supervise daily laundry operations, linen inventory, and uniform steam pressing',
+      'Train room attendants on speed, eco-friendly cleaning agents, and guest privacy protocol',
+      'Report maintenance defects promptly to the engineering department'
+    ],
+    requirements: [
+      'Proven experience as a housekeeping supervisor in a reputable 4 or 5-star hotel',
+      'Sharp attention to detail and zero tolerance for dust, stains, or disarray',
+      'Strong leadership skills with ability to motivate and coordinate a 15-person team'
+    ]
+  },
+  {
+    id: 'job-banquet-supervisor',
+    title: 'Banquet & Events Operations Supervisor',
+    department: 'Events & Banquets',
+    jobType: 'Full-time',
+    location: 'Akwanga, Nasarawa State',
+    experienceLevel: '2+ years event venue coordination',
+    salaryRange: '₦130,000 – ₦170,000 / month',
+    description: 'Coordinate banquet setups, gala receptions, and corporate conferences in our Grand Crystal Ballroom and outdoor Poolside Marquee.',
+    responsibilities: [
+      'Coordinate floor plans, stage lighting, sound system checks, and table decor with clients',
+      'Lead banquet service staff during high-profile political events and wedding receptions',
+      'Ensure prompt buffet replenishment, beverage service, and guest seating comfort',
+      'Liaise with event decorators and media crews for seamless event execution'
+    ],
+    requirements: [
+      'Degree or diploma in Event Management, Hospitality, or Business Administration',
+      'Energetic, organized, and capable of managing large crowds up to 1,200 attendees',
+      'Polite diplomatic demeanor when interacting with VIP dignitaries and event planners'
+    ]
+  }
+];

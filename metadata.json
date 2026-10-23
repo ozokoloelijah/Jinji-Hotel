@@ -1,0 +1,6 @@
+{
+  "name": "Jinji Hotels Ltd",
+  "description": "Luxury 5-star hospitality website and booking platform for Jinji Hotels Ltd, featuring luxury suites, event halls, fine dining, and seamless reservations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
