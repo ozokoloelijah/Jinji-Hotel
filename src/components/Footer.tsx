@@ -23,7 +23,6 @@ interface FooterProps {
   onOpenSubmitReview?: () => void;
   onOpenShuttle?: () => void;
   onOpenCompareRooms?: () => void;
-  onOpenLoyalty?: () => void;
   hotelInfo?: HotelInfoConfig;
 }
 
@@ -37,7 +36,6 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenSubmitReview,
   onOpenShuttle,
   onOpenCompareRooms,
-  onOpenLoyalty,
   hotelInfo = HOTEL_INFO
 }) => {
   const [newsletterEmail, setNewsletterEmail] = useState('');
@@ -249,20 +247,12 @@ export const Footer: React.FC<FooterProps> = ({
                 </button>
               )}
 
-              <div className="grid grid-cols-2 gap-2">
-                <button
-                  onClick={onOpenMyBookings}
-                  className="w-full py-2 px-2 bg-stone-900 border border-stone-700 hover:border-amber-500/40 text-stone-300 text-xs font-semibold rounded-sm transition-colors cursor-pointer text-center block"
-                >
-                  My Bookings
-                </button>
-                <button
-                  onClick={onOpenLoyalty || onOpenMyBookings}
-                  className="w-full py-2 px-2 bg-amber-500/10 border border-amber-500/50 hover:bg-amber-500/20 text-amber-300 text-xs font-bold rounded-sm transition-colors cursor-pointer text-center block"
-                >
-                  Jinji Rewards
-                </button>
-              </div>
+              <button
+                onClick={onOpenMyBookings}
+                className="w-full py-2 px-3 bg-stone-900 border border-amber-500/30 text-amber-400 text-xs font-semibold rounded-sm hover:bg-stone-850 transition-colors cursor-pointer text-center block"
+              >
+                Find / Manage My Booking
+              </button>
             </div>
           </div>
 
@@ -344,11 +334,10 @@ export const Footer: React.FC<FooterProps> = ({
             {/* HIDDEN ADMIN BUTTON */}
             <button
               onClick={onOpenAdminLogin}
-              className="inline-flex items-center gap-1 text-stone-600 hover:text-amber-400 transition-colors p-1 rounded cursor-pointer"
-              title="Staff Management Portal (Requires Login)"
+              className="inline-flex items-center text-stone-700 hover:text-amber-400/80 transition-colors p-1 rounded cursor-pointer"
+              aria-label="Management Login"
             >
               <Lock className="w-3 h-3" />
-              <span className="text-[11px]">Staff Portal</span>
             </button>
           </div>
         </div>

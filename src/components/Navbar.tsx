@@ -30,7 +30,6 @@ interface NavbarProps {
   onNavigate: (page: PageId) => void;
   onOpenBooking: (roomId?: string) => void;
   onOpenMyBookings: () => void;
-  onOpenLoyalty?: () => void;
   onOpenAdminLogin: () => void;
   hotelInfo?: HotelInfoConfig;
 }
@@ -40,7 +39,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   onNavigate, 
   onOpenBooking, 
   onOpenMyBookings,
-  onOpenLoyalty,
   onOpenAdminLogin,
   hotelInfo = HOTEL_INFO
 }) => {
@@ -125,15 +123,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <div className="flex items-center gap-4 text-xs">
             <button
-              onClick={onOpenLoyalty || onOpenMyBookings}
-              className="flex items-center gap-1.5 text-amber-300 hover:text-amber-200 transition-colors font-medium cursor-pointer"
-              title="Jinji Rewards VIP Club"
-            >
-              <Crown className="w-3.5 h-3.5 text-amber-400" />
-              <span>Jinji Rewards</span>
-            </button>
-            <span className="text-stone-700">|</span>
-            <button
               onClick={onOpenMyBookings}
               className="flex items-center gap-1.5 text-amber-400 hover:text-amber-300 transition-colors font-medium cursor-pointer"
             >
@@ -155,7 +144,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={onOpenAdminLogin}
               className="text-stone-600 hover:text-amber-400/80 p-0.5 rounded transition-colors cursor-pointer"
-              title="Staff Portal Login"
+              aria-label="Management Login"
             >
               <Lock className="w-3 h-3" />
             </button>
@@ -401,29 +390,17 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>Lookup My Reservation</span>
             </button>
 
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                if (onOpenLoyalty) onOpenLoyalty();
-                else onOpenMyBookings();
-              }}
-              className="w-full py-2.5 rounded-sm bg-stone-900 border border-amber-500/50 text-amber-300 font-bold text-xs uppercase flex items-center justify-center gap-2"
-            >
-              <Crown className="w-4 h-4 text-amber-400" />
-              <span>Jinji Rewards Loyalty Club</span>
-            </button>
-
-            {/* Hidden admin link in mobile menu */}
+            {/* Discreet admin link in mobile menu */}
             <div className="pt-2 text-center">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenAdminLogin();
                 }}
-                className="text-stone-600 hover:text-amber-400 text-[11px] inline-flex items-center gap-1 cursor-pointer"
+                className="text-stone-700 hover:text-amber-400 p-1.5 transition-colors cursor-pointer inline-flex items-center justify-center rounded"
+                aria-label="Management Access"
               >
-                <Lock className="w-3 h-3" />
-                <span>Staff Portal Access</span>
+                <Lock className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>

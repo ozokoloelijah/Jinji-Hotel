@@ -248,12 +248,33 @@ export interface StaffMember {
 
 export interface StaffActivityLog {
   id: string;
+  staffId?: string;
   staffName: string;
   staffRole: string;
   action: string;
-  category: 'Reservations' | 'Rates' | 'Staff' | 'Content' | 'Maintenance' | 'Security';
+  category: 'Reservations' | 'Rates' | 'Staff' | 'Content' | 'Maintenance' | 'Security' | 'Events' | 'Food & Beverage';
   timestamp: string;
+  location?: string;
+  stationId?: string;
+  severity?: 'Info' | 'Success' | 'Warning' | 'Audit';
   details: string;
+}
+
+export interface StaffLoginSession {
+  id: string;
+  staffId: string;
+  staffName: string;
+  staffRole: string;
+  department: string;
+  loginTime: string;
+  logoutTime?: string;
+  duration?: string;
+  terminal: string;
+  device: string;
+  ipAddress: string;
+  location: string;
+  status: 'Active' | 'Logged Out' | 'Terminated';
+  avatar?: string;
 }
 
 export interface StaffTask {
@@ -268,34 +289,4 @@ export interface StaffTask {
   dueDate: string;
   notes?: string;
   createdAt: string;
-}
-
-export interface LoyaltyMember {
-  memberId: string;
-  fullName: string;
-  email: string;
-  phone: string;
-  tier: 'Silver' | 'Gold' | 'Platinum';
-  bonusPoints: number;
-  enrolledAt: string;
-  redeemedPoints: number;
-  preferredRoom?: string;
-}
-
-export interface LoyaltyRewardItem {
-  id: string;
-  title: string;
-  pointsCost: number;
-  description: string;
-  category: 'dining' | 'room' | 'transport' | 'experience';
-  valueNaira: number;
-}
-
-export interface LoyaltyVoucher {
-  id: string;
-  code: string;
-  rewardTitle: string;
-  pointsDeducted: number;
-  redeemedAt: string;
-  status: 'Active' | 'Used';
 }

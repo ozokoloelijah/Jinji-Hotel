@@ -63,7 +63,7 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
             <Lock className="w-6 h-6" />
           </div>
           <span className="text-[10px] uppercase tracking-widest text-amber-400 font-semibold block mb-1">
-            STAFF & MANAGEMENT ACCESS
+            MANAGEMENT & ADMIN ACCESS
           </span>
           <h3 className="font-serif-luxury text-2xl font-bold text-stone-100">
             Jinji Hotels Admin Portal

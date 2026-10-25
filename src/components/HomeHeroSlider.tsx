@@ -91,7 +91,7 @@ export const HomeHeroSlider: React.FC<HomeHeroSliderProps> = ({
                 src={slide.url}
                 alt=""
                 aria-hidden="true"
-                className="absolute inset-0 w-full h-full object-cover filter blur-2xl scale-125 opacity-40 brightness-50 pointer-events-none"
+                className="absolute inset-0 w-full h-full object-cover object-top filter blur-2xl scale-125 opacity-40 brightness-50 pointer-events-none"
               />
 
               {/* Main slide picture automatically fitted into frame with upper top part showing */}

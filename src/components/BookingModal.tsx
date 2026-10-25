@@ -673,17 +673,6 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     ₦{confirmedReservation.grandTotal.toLocaleString()}
                   </span>
                 </div>
-
-                {/* Jinji Rewards Points Earned Badge */}
-                <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-sm flex items-center justify-between text-xs mt-3">
-                  <div className="flex items-center gap-2 text-amber-300 font-semibold">
-                    <Crown className="w-4 h-4 text-amber-400" />
-                    <span>Jinji Rewards Loyalty Points Earned:</span>
-                  </div>
-                  <span className="font-mono text-amber-300 font-bold">
-                    +{Math.floor(confirmedReservation.grandTotal / 100).toLocaleString()} Points
-                  </span>
-                </div>
               </div>
 
               {/* Action buttons */}
