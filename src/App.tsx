@@ -122,6 +122,7 @@ export default function App() {
   const [initialBookingDates, setInitialBookingDates] = useState<{ checkIn: string; checkOut: string; adults: number } | undefined>(undefined);
   const [selectedRoomDetails, setSelectedRoomDetails] = useState<Room | null>(null);
   const [isMyBookingsOpen, setIsMyBookingsOpen] = useState(false);
+  const [myBookingsTab, setMyBookingsTab] = useState<'bookings' | 'loyalty'>('bookings');
 
   // Additional Standard Hotel Modals
   const [isCompareRoomsOpen, setIsCompareRoomsOpen] = useState(false);
@@ -144,6 +145,11 @@ export default function App() {
   const handleCloseBooking = () => {
     setIsBookingOpen(false);
     setSelectedRoomIdForBooking(undefined);
+  };
+
+  const handleOpenMyBookings = (tab: 'bookings' | 'loyalty' = 'bookings') => {
+    setMyBookingsTab(tab);
+    setIsMyBookingsOpen(true);
   };
 
   const handleNavigate = (page: PageId) => {
@@ -267,7 +273,8 @@ export default function App() {
             currentPage={currentPage}
             onNavigate={handleNavigate}
             onOpenBooking={handleOpenBooking}
-            onOpenMyBookings={() => setIsMyBookingsOpen(true)}
+            onOpenMyBookings={() => handleOpenMyBookings('bookings')}
+            onOpenLoyalty={() => handleOpenMyBookings('loyalty')}
             onOpenAdminLogin={() => setIsAdminLoginOpen(true)}
             hotelInfo={hotelInfo}
           />
@@ -278,6 +285,7 @@ export default function App() {
               <HomePage
                 onOpenBooking={handleOpenBooking}
                 onNavigate={handleNavigate}
+                onOpenLoyaltyModal={() => handleOpenMyBookings('loyalty')}
                 sliderImages={sliderImages}
                 rooms={rooms}
                 hotelInfo={hotelInfo}
@@ -355,7 +363,8 @@ export default function App() {
           <Footer
             onNavigate={handleNavigate}
             onOpenBooking={(roomId) => handleOpenBooking(roomId)}
-            onOpenMyBookings={() => setIsMyBookingsOpen(true)}
+            onOpenMyBookings={() => handleOpenMyBookings('bookings')}
+            onOpenLoyalty={() => handleOpenMyBookings('loyalty')}
             onOpenAdminLogin={() => setIsAdminLoginOpen(true)}
             onOpenPrivacy={() => setPrivacyModalType('privacy')}
             onOpenTerms={() => setPrivacyModalType('terms')}
@@ -387,10 +396,11 @@ export default function App() {
         hotelInfo={hotelInfo}
       />
 
-      {/* Guest Reservation Lookup Modal */}
+      {/* Guest Reservation & Jinji Rewards Loyalty Modal */}
       <MyBookingsModal
         isOpen={isMyBookingsOpen}
         onClose={() => setIsMyBookingsOpen(false)}
+        initialTab={myBookingsTab}
       />
 
       {/* Interactive Suite Comparison Modal */}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { HomeHeroSlider } from '../HomeHeroSlider';
+import { JinjiRewardsSection } from '../JinjiRewardsSection';
 import { PageId, Room, HotelInfoConfig } from '../../types/hotel';
 import { HOTEL_INFO, ROOMS_DATA, HOME_SLIDER_IMAGES } from '../../data/hotelData';
 import { 
@@ -16,6 +17,7 @@ import {
 interface HomePageProps {
   onOpenBooking: (roomId?: string, initialData?: { checkIn: string; checkOut: string; adults: number }) => void;
   onNavigate: (page: PageId) => void;
+  onOpenLoyaltyModal?: () => void;
   sliderImages?: Array<{ id: number; title: string; tagline: string; url: string }>;
   rooms?: Room[];
   hotelInfo?: HotelInfoConfig;
@@ -24,6 +26,7 @@ interface HomePageProps {
 export const HomePage: React.FC<HomePageProps> = ({ 
   onOpenBooking, 
   onNavigate,
+  onOpenLoyaltyModal,
   sliderImages = HOME_SLIDER_IMAGES,
   rooms = ROOMS_DATA,
   hotelInfo = HOTEL_INFO
@@ -106,6 +109,14 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
         </div>
       </section>
+
+      {/* Jinji Rewards VIP Loyalty Program Section */}
+      <JinjiRewardsSection 
+        onOpenBooking={onOpenBooking}
+        onOpenLoyaltyModal={onOpenLoyaltyModal || (() => {})}
+        onNavigate={onNavigate}
+        rooms={rooms}
+      />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { Room, EventHall, RestaurantDish, Facility, Review, BookingAddOn, HotelInfoConfig, StaffMember, StaffActivityLog, StaffTask, SpecialOffer, LocalAttraction, HotelPolicyItem, JobOpening } from '../types/hotel';
+import { Room, EventHall, RestaurantDish, Facility, Review, BookingAddOn, HotelInfoConfig, StaffMember, StaffActivityLog, StaffTask, SpecialOffer, LocalAttraction, HotelPolicyItem, JobOpening, LoyaltyRewardItem } from '../types/hotel';
 
 export const HOTEL_INFO: HotelInfoConfig = {
   name: 'Jinji Hotels Ltd',
@@ -1225,4 +1225,55 @@ export const CAREER_OPENINGS_DATA: JobOpening[] = [
       'Polite diplomatic demeanor when interacting with VIP dignitaries and event planners'
     ]
   }
+];
+
+export const LOYALTY_REWARDS_DATA: LoyaltyRewardItem[] = [
+  {
+    id: 'rew-cocktail-dessert',
+    title: "Complimentary Chef's Dessert or Cocktail",
+    pointsCost: 500,
+    description: 'Enjoy a gourmet dessert or signature handcrafted tropical cocktail at The Royal Palm Restaurant & Bar.',
+    category: 'dining',
+    valueNaira: 5000,
+  },
+  {
+    id: 'rew-late-checkout',
+    title: 'Guaranteed 2-Hour Late Check-Out',
+    pointsCost: 1000,
+    description: 'Relax longer with a guaranteed 2:00 PM check-out without extra room charges.',
+    category: 'room',
+    valueNaira: 10000,
+  },
+  {
+    id: 'rew-dining-voucher',
+    title: '₦15,000 Royal Palm Dining Credit',
+    pointsCost: 1500,
+    description: '₦15,000 credit towards any à la carte dinner, vintage wine, or poolside drinks.',
+    category: 'dining',
+    valueNaira: 15000,
+  },
+  {
+    id: 'rew-suite-discount',
+    title: '₦25,000 Off Any Suite Booking',
+    pointsCost: 2500,
+    description: 'Instant ₦25,000 rebate off your next Executive, Diplomatic, or Presidential Suite reservation.',
+    category: 'room',
+    valueNaira: 25000,
+  },
+  {
+    id: 'rew-airport-transfer',
+    title: 'Complimentary Airport Chauffeur Transfer',
+    pointsCost: 5000,
+    description: 'Private luxury executive transfer between Nnamdi Azikiwe Airport Abuja (ABV) or Lafia and Jinji Hotels.',
+    category: 'transport',
+    valueNaira: 45000,
+  },
+  {
+    id: 'rew-free-night',
+    title: '1 Free Weekend Night in Deluxe Room',
+    pointsCost: 7500,
+    description: 'Complimentary weekend night stay including gourmet breakfast for two and Olympic pool access.',
+    category: 'room',
+    valueNaira: 45000,
+  },
 ];

@@ -269,3 +269,33 @@ export interface StaffTask {
   notes?: string;
   createdAt: string;
 }
+
+export interface LoyaltyMember {
+  memberId: string;
+  fullName: string;
+  email: string;
+  phone: string;
+  tier: 'Silver' | 'Gold' | 'Platinum';
+  bonusPoints: number;
+  enrolledAt: string;
+  redeemedPoints: number;
+  preferredRoom?: string;
+}
+
+export interface LoyaltyRewardItem {
+  id: string;
+  title: string;
+  pointsCost: number;
+  description: string;
+  category: 'dining' | 'room' | 'transport' | 'experience';
+  valueNaira: number;
+}
+
+export interface LoyaltyVoucher {
+  id: string;
+  code: string;
+  rewardTitle: string;
+  pointsDeducted: number;
+  redeemedAt: string;
+  status: 'Active' | 'Used';
+}
