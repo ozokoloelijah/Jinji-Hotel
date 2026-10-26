@@ -42,15 +42,20 @@ import {
   ArrowUp,
   ArrowDown,
   Eye,
-  Share2
+  Share2,
+  Radio,
+  Footprints
 } from 'lucide-react';
 import { DeviceImageUploadButton } from './LocalImagePicker';
 import { AddDeviceImageModal } from './AddDeviceImageModal';
+import { StaffLoginMonitor } from './StaffLoginMonitor';
+import { StaffActivityTrailMap } from './StaffActivityTrailMap';
 import { 
   HOTEL_INFO, 
   INITIAL_STAFF_MEMBERS, 
   INITIAL_ACTIVITY_LOGS,
   INITIAL_STAFF_TASKS,
+  INITIAL_STAFF_LOGINS,
   EVENT_HALLS_DATA,
   RESTAURANT_MENU,
   FACILITIES_DATA,
@@ -69,6 +74,7 @@ import {
   StaffMember,
   StaffActivityLog,
   StaffTask,
+  StaffLoginSession,
   GalleryItem
 } from '../../types/hotel';
 
@@ -93,7 +99,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   sliderImages,
   onUpdateSliderImages,
 }) => {
-  const [activeTab, setActiveTab] = useState<'overview' | 'staff' | 'media' | 'site_info' | 'bookings' | 'events_dining' | 'activity_log'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'staff' | 'logins' | 'trail_map' | 'media' | 'site_info' | 'bookings' | 'events_dining' | 'activity_log'>('overview');
   const [saveSuccessMsg, setSaveSuccessMsg] = useState('');
 
   // 1. HOTEL INFO FORM STATE
@@ -111,6 +117,16 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
       return stored ? JSON.parse(stored) : INITIAL_STAFF_MEMBERS;
     } catch {
       return INITIAL_STAFF_MEMBERS;
+    }
+  });
+
+  // 2b. STAFF LOGIN SESSIONS MONITORING STATE
+  const [staffLogins, setStaffLogins] = useState<StaffLoginSession[]>(() => {
+    try {
+      const stored = localStorage.getItem('jinji_staff_logins');
+      return stored ? JSON.parse(stored) : INITIAL_STAFF_LOGINS;
+    } catch {
+      return INITIAL_STAFF_LOGINS;
     }
   });
 
@@ -307,14 +323,21 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   };
 
   // Helper to append to activity log
-  const logActivity = (action: string, category: StaffActivityLog['category'], details: string) => {
+  const logActivity = (
+    action: string, 
+    category: StaffActivityLog['category'], 
+    details: string,
+    staffName: string = 'Admin / Duty Manager',
+    location: string = 'Executive Operations Office'
+  ) => {
     const newEntry: StaffActivityLog = {
       id: `act-${Date.now()}`,
-      staffName: 'Admin / Duty Manager',
-      staffRole: 'Super Admin',
+      staffName,
+      staffRole: staffName === 'Admin / Duty Manager' ? 'Super Admin' : (staffList.find(s => s.name === staffName)?.role || 'Staff'),
       action,
       category,
       timestamp: 'Just now',
+      location,
       details,
     };
     const updated = [newEntry, ...activityLogs];
@@ -324,6 +347,22 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
     } catch {
       // ignore
     }
+  };
+
+  const handleTerminateStaffSession = (sessionId: string, staffName: string) => {
+    const updated = staffLogins.map((s) => (s.id === sessionId ? { ...s, status: 'Terminated' as const, logoutTime: 'Just now' } : s));
+    setStaffLogins(updated);
+    localStorage.setItem('jinji_staff_logins', JSON.stringify(updated));
+    triggerToast(`Session for ${staffName} forcefully terminated.`);
+    logActivity('Session Terminated', 'Security', `Super Admin terminated active login session for ${staffName}`, 'Super Admin', 'Security Command');
+  };
+
+  const handleRecordStaffLogin = (newSession: StaffLoginSession) => {
+    const updated = [newSession, ...staffLogins];
+    setStaffLogins(updated);
+    localStorage.setItem('jinji_staff_logins', JSON.stringify(updated));
+    triggerToast(`Authenticated login session registered for ${newSession.staffName}.`);
+    logActivity('Staff Login Authenticated', 'Security', `Staff member ${newSession.staffName} authenticated at ${newSession.terminal}`, newSession.staffName, newSession.location);
   };
 
   // 1. SAVE HOTEL INFO & CONTACTS
@@ -552,12 +591,18 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
   // DELETE STAFF
   const handleDeleteStaff = (id: string, name: string) => {
-    if (window.confirm(`Remove ${name} from staff records?`)) {
+    if (window.confirm(`Are you sure you want to remove ${name} from staff roster? All active sessions will be terminated.`)) {
       const updated = staffList.filter((s) => s.id !== id);
       setStaffList(updated);
       localStorage.setItem('jinji_staff_members', JSON.stringify(updated));
-      triggerToast(`Staff record removed.`);
-      logActivity('Staff Removed', 'Staff', `Removed staff member ${name}`);
+
+      // Also terminate any active logins for this staff member
+      const updatedLogins = staffLogins.map(s => s.staffName === name ? { ...s, status: 'Terminated' as const, logoutTime: 'Removed' } : s);
+      setStaffLogins(updatedLogins);
+      localStorage.setItem('jinji_staff_logins', JSON.stringify(updatedLogins));
+
+      triggerToast(`Removed ${name} from staff roster.`);
+      logActivity('Staff Removed', 'Staff', `Super Admin removed staff member ${name} from hotel roster.`, 'Super Admin', 'Admin Suite');
     }
   };
 
@@ -799,7 +844,31 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             }`}
           >
             <Users className="w-4 h-4" />
-            <span>Staff Management ({staffList.length})</span>
+            <span>Staff Directory ({staffList.length})</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('logins')}
+            className={`px-4 py-2 rounded-sm text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer flex items-center gap-2 ${
+              activeTab === 'logins'
+                ? 'bg-amber-500 text-stone-950 font-bold shadow-md'
+                : 'bg-stone-900 text-stone-300 hover:text-white border border-stone-800'
+            }`}
+          >
+            <Radio className="w-4 h-4 text-emerald-400" />
+            <span>Staff Logins ({staffLogins.filter(s => s.status === 'Active').length} Active)</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('trail_map')}
+            className={`px-4 py-2 rounded-sm text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer flex items-center gap-2 ${
+              activeTab === 'trail_map'
+                ? 'bg-amber-500 text-stone-950 font-bold shadow-md'
+                : 'bg-stone-900 text-stone-300 hover:text-white border border-stone-800'
+            }`}
+          >
+            <Footprints className="w-4 h-4 text-amber-400" />
+            <span>Activity Trail Map</span>
           </button>
 
           <button
@@ -1202,6 +1271,25 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
               </div>
             </div>
           </div>
+        )}
+
+        {/* 2b. STAFF LOGIN MONITORING TAB */}
+        {activeTab === 'logins' && (
+          <StaffLoginMonitor
+            logins={staffLogins}
+            onTerminateSession={handleTerminateStaffSession}
+            onRecordLogin={handleRecordStaffLogin}
+            staffList={staffList}
+          />
+        )}
+
+        {/* 2c. STAFF ACTIVITY TRAIL MAP TAB */}
+        {activeTab === 'trail_map' && (
+          <StaffActivityTrailMap
+            activityLogs={activityLogs}
+            staffList={staffList}
+            onLogActivity={logActivity}
+          />
         )}
 
         {/* 3. CHANGE IMAGES & LOGO TAB */}
